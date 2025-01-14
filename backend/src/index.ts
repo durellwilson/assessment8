@@ -14,7 +14,7 @@ app.use(cors());
 // allow POST and PUT requests to use JSON bodies
 app.use(express.json());
 
-app.use("/", placeRouter);
+app.use("/api", placeRouter);
 
 // define the port
 const port = 5001;

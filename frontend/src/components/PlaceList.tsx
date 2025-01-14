@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Place } from '../types/Place'; 
-
+import { Place } from '../types/Place';
+import { getPlaces } from '../services/placeService';
 export default function PlaceList() {
   const [places, setPlaces] = useState<Place[]>([]);
 
   useEffect(() => {
     const fetchPlaces = async () => {
-      try {
-        const response = await fetch('/api/places');
-        const data = await response.json();
-        setPlaces(data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      const data = await getPlaces();
+      setPlaces(data);
     };
     fetchPlaces();
   }, []);

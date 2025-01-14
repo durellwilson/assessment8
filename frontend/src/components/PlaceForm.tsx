@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { addPlace } from '../services/placeService';
 
-export default function PlaceForm({ onPlaceAdded }: { onPlaceAdded: () => void }) {
+interface PlaceFormProps {
+  onPlaceAdded: () => void;
+}
+
+export default function PlaceForm({ onPlaceAdded }: PlaceFormProps) {
   const [name, setName] = useState('');
   const [firstTime, setFirstTime] = useState(false);
 
@@ -21,7 +25,6 @@ export default function PlaceForm({ onPlaceAdded }: { onPlaceAdded: () => void }
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
         />
       </label>
       <label>

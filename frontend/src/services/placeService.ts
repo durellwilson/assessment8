@@ -1,16 +1,12 @@
 import axios from 'axios';
 import { Place } from '../types/Place';
 
-const BASE_URL = '/api';
-
-// Function to get all places
 export const getPlaces = async (): Promise<Place[]> => {
-  const response = await axios.get<Place[]>(`${BASE_URL}/places`);
+  const response = await axios.get('/api/places/');
   return response.data;
 };
 
-// Function to add a new place
-export const addPlace = async (place: { name: string; firstTime: boolean }): Promise<Place> => {
-  const response = await axios.post<Place>(`${BASE_URL}/places`, place);
+export const addPlace = async (place: Omit<Place, '_id'>): Promise<Place> => {
+  const response = await axios.post('/api/places/', place);
   return response.data;
 };

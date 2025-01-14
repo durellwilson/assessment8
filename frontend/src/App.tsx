@@ -1,20 +1,19 @@
-import { useState } from 'react';
 import PlaceList from './components/PlaceList';
 import PlaceForm from './components/PlaceForm';
+import './App.css';
 
-export default function App() {
-  const [refreshKey, setRefreshKey] = useState(0);
-
+function App() {
   const handlePlaceAdded = () => {
-    setRefreshKey(prev => prev + 1);
+    window.location.reload();
   };
 
   return (
     <div>
       <h1>Places App</h1>
       <PlaceForm onPlaceAdded={handlePlaceAdded} />
-      <PlaceList refreshKey={refreshKey} />
+      <PlaceList />
     </div>
   );
 }
 
+export default App;
